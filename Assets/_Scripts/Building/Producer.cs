@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class Producer : MonoBehaviour
 {
-    public ResourceValue resourceValue;
+    public ResourceValue[] resourceValues;
     private IFirable firable;
     private Building building;
     
@@ -15,7 +15,10 @@ public class Producer : MonoBehaviour
 
     private void HandleFire()
     {
-        Resource resource = resourceValue.resource;
-        resource.Value += (resourceValue.value * building.count);
+        foreach(ResourceValue resourceValue in resourceValues)
+        {            
+            Resource resource = resourceValue.resource;
+            resource.Value += (resourceValue.value * building.Count);
+        }
     }
 }

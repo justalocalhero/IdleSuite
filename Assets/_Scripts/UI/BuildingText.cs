@@ -4,12 +4,12 @@ using TMPro;
 public class BuildingText : MonoBehaviour
 {
     private Building building;
-    private TextMeshProUGUI text;
+    public TextMeshProUGUI nameText;
+    public TextMeshProUGUI valueText;
 
     private void Start() 
     {
         building = GetComponentInParent<Building>();
-        text = GetComponentInChildren<TextMeshProUGUI>();
 
         building.onCountChanged += (int count) => UpdateText();
 
@@ -18,8 +18,7 @@ public class BuildingText : MonoBehaviour
 
     private void UpdateText()
     {
-        string toSet = building.name + " " + building.count;
-
-        text.SetText(toSet);
+        nameText.SetText(building.name);
+        valueText.SetText(building.Count.ToString());
     }
 }

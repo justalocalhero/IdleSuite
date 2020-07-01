@@ -13,6 +13,6 @@ public class DestroyButton : MonoBehaviour
 
     public void UpdateVisibility()
     {
-        gameObject.SetActive(building.count > 0);
+        gameObject.SetActive(building.Count > 0);
     }
 }

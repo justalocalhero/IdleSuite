@@ -6,13 +6,13 @@ using TMPro;
 public class ResourceText : MonoBehaviour
 {
     public Resource resource;
-    private TextMeshProUGUI text;
+    public TextMeshProUGUI nameText;
+    public TextMeshProUGUI valueText;
 
     // Start is called before the first frame update
     void Start()
     {
-        text = GetComponentInChildren<TextMeshProUGUI>();
-        resource.onValueSet += (int value) => UpdateText();
+        resource.onChanged += UpdateText;
         UpdateText();
     }
 
@@ -25,7 +25,13 @@ public class ResourceText : MonoBehaviour
         else
         {
             gameObject.SetActive(true);
-            text.SetText(resource.name + " " + resource.Value);
+
+            string nameString = resource.name;
+            string valueString = " " + resource.Free;
+            if(resource.Reserved > 0) valueString += " / " + resource.Value;
+
+            nameText.SetText(nameString);
+            valueText.SetText(valueString);
         }
     }
 }

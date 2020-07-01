@@ -12,3 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c67f311febd0ec64f82658683bc04912, type: 3}
   m_Name: Carrot
   m_EditorClassIdentifier: 
+  initialValue: 0

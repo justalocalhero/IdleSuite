@@ -17,7 +17,7 @@ public class InverseSquareProgress : MonoBehaviour
 
     private void HandleFire()
     {
-        progress += building.count * progressPerCycle;
+        progress += building.Count * progressPerCycle;
         float lifetimeRoot = Mathf.Sqrt(resource.lifeTimeValue);
 
         while(progress >= lifetimeRoot)
