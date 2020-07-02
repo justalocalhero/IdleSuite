@@ -3,14 +3,13 @@ using TMPro;
 
 public class ReserveCostText : MonoBehaviour
 {
-    private ReserveCost reserveCost;
+    private ReserveValues reserveCost;
     public TextMeshProUGUI nameText;
     public TextMeshProUGUI valueText;
 
     private void Start() 
     {
-        reserveCost = GetComponentInParent<Building>().GetComponentInChildren<ReserveCost>();
-
+        reserveCost = GetComponentInParent<HeirarchyNode>().GetComponentInChildren<ReserveValues>();
         UpdateText();
     }
 
@@ -19,7 +18,7 @@ public class ReserveCostText : MonoBehaviour
         string nameString = "";
         string valueString = "";
 
-        foreach(ResourceValue cost in reserveCost.reserves)
+        foreach(ResourceValue cost in reserveCost.GetValues())
         {
             nameString += cost.resource.name + "\n";
             valueString += cost.value + "\n";

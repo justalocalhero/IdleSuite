@@ -1,17 +1,17 @@
 public class UnReserve : Effect
 {
-    private ReserveCost reserveCost;
+    private ReserveValues reserveCost;
 
     protected override void OnAwake()
     {
-        reserveCost = GetComponentInParent<Building>().GetComponentInChildren<ReserveCost>();
+        reserveCost = GetComponentInParent<HeirarchyNode>().GetComponentInChildren<ReserveValues>();
     }
 
-    public override void FireEffect()
+    public override void FireEffect(int fireCount)
     {
-        foreach(ResourceValue reserve in reserveCost.reserves)
+        foreach(ResourceValue reserve in reserveCost.GetValues())
         {
-            reserve.resource.Reserved -= reserve.value;
+            reserve.resource.Reserved -= reserve.value * fireCount;
         }
     }
 }

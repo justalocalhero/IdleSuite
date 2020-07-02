@@ -1,3 +1,5 @@
+using UnityEngine;
+
 public class MaximumCount : Condition
 {
     public int maximumCount;
@@ -8,8 +10,8 @@ public class MaximumCount : Condition
         building = GetComponentInParent<Building>();
     }
 
-    public override bool CanFire()
+    public override int CanFire(int fireCount)
     {
-        return building.Count < maximumCount;
+        return Mathf.Min(maximumCount - building.Count, fireCount);
     }
 }

@@ -13,5 +13,5 @@ public abstract class Effect : MonoBehaviour
     
     protected virtual void OnAwake() { }
 
-    public abstract void FireEffect();
+    public abstract void FireEffect(int FireCount);
 }

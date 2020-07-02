@@ -17,6 +17,12 @@ public class Resource : ScriptableObject
     public delegate void OnReservedChanged(int dif);
     public OnReservedChanged onReservedChanged;
 
+    public delegate void OnMaximumSet(int value);
+    public OnMaximumSet onMaximumSet;
+
+    public delegate void OnMaximumChanged(int dif);
+    public OnMaximumChanged onMaximumChanged;
+
     public delegate void OnChanged();
     public OnChanged onChanged;
 
@@ -33,9 +39,11 @@ public class Resource : ScriptableObject
         } 
         set 
         {
-            int dif = value - _value;
+            int clampedValue = Mathf.Clamp(value, int.MinValue, Maximum);
+            int dif = clampedValue - _value;
+
             if(dif > 0) lifeTimeValue += dif;
-            _value = value;
+            _value = clampedValue;
 
             if(onValueSet != null) onValueSet(_value);
             if(onValueChanged != null) onValueChanged(dif);
@@ -62,13 +70,30 @@ public class Resource : ScriptableObject
         }
     }
 
-    public int Free
+    
+    public int Free { get { return Value - Reserved; } }
+    public int Space { get { return Maximum - Value; } }
+
+    [SerializeField] private int initialMaximum;
+    private int _maximum;
+    public int Maximum
     {
         get
         {
-            return Value - Reserved;
-        }        
+            return _maximum;
+        }
+        set
+        {
+            int dif = value - _maximum;
+            _maximum = value;
 
+            if(Value > Maximum) Value = Maximum;
+            
+            if(onMaximumSet != null) onMaximumSet(_value);
+            if(onMaximumChanged != null) onMaximumChanged(dif);
+            if(onChanged != null) onChanged();
+
+        }
     }
 
     public void ResetResource()
@@ -76,6 +101,7 @@ public class Resource : ScriptableObject
         lifeTimeValue = 0;
         _value = 0;
         _reserved = 0;
+        _maximum = initialMaximum;
         Value = initialValue;
     }
 

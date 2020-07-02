@@ -48,4 +48,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b9074f85dcf05f048af868ca6c6afb30, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fireTime: 0
+  fireTime: 1

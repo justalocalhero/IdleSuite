@@ -27,8 +27,8 @@ public class ResourceText : MonoBehaviour
             gameObject.SetActive(true);
 
             string nameString = resource.name;
-            string valueString = " " + resource.Free;
-            if(resource.Reserved > 0) valueString += " / " + resource.Value;
+            string valueString = " " + resource.Free + " / " + resource.Maximum;
+            if(resource.Reserved > 0) valueString += " : " + resource.Reserved + " in Use.";
 
             nameText.SetText(nameString);
             valueText.SetText(valueString);

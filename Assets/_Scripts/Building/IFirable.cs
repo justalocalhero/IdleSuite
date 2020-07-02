@@ -1,7 +1,7 @@
-public delegate void OnFire();
+public delegate void OnFire(int fireCount);
 
 public interface IFirable
 {
     event OnFire onFire;
-    void Fire();
+    //void Fire(int fireCount);
 }

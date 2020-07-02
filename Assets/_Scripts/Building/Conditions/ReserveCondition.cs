@@ -1,19 +1,23 @@
+using UnityEngine;
+
 public class ReserveCondition : Condition
 {
-    private ReserveCost reserveCost;
+    private ReserveValues reserveCost;
 
     protected override void OnAwake()
     {
-        reserveCost = GetComponentInParent<Building>().GetComponentInChildren<ReserveCost>();
+        reserveCost = GetComponentInParent<HeirarchyNode>().GetComponentInChildren<ReserveValues>();
     }
 
-    public override bool CanFire()
+    public override int CanFire(int fireCount)
     {
-        foreach(ResourceValue reserve in reserveCost.reserves)
+        int toReturn = fireCount;
+
+        foreach(ResourceValue reserve in reserveCost.GetValues())
         {
-            if(reserve.resource.Free <= 0) return false;
+            toReturn = Mathf.Min(toReturn, reserve.resource.Free);
         }
 
-        return true;
+        return toReturn;
     }
 }

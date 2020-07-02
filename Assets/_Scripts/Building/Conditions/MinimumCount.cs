@@ -1,3 +1,5 @@
+using UnityEngine;
+
 public class MinimumCount : Condition
 {
     public int minimumCount;
@@ -8,8 +10,8 @@ public class MinimumCount : Condition
         building = GetComponentInParent<Building>();
     }
 
-    public override bool CanFire()
+    public override int CanFire(int fireCount)
     {
-        return building.Count >= minimumCount;
+        return Mathf.Min(fireCount, building.Count - minimumCount);
     }
 }

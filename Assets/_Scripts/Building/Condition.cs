@@ -8,12 +8,13 @@ public abstract class Condition : MonoBehaviour, ICondition
     {
         conditional = GetComponentInParent<IConditional>();
         conditional.onTryFire += HandleTryFire;
+
         OnAwake();
     }
 
-    private void HandleTryFire()
+    private void HandleTryFire(int fireCount)
     {
-        conditional.CanFire &= CanFire();
+        conditional.MaxFirable = Mathf.Min(conditional.MaxFirable, CanFire(fireCount));
     }
     
     protected virtual void OnAwake()
@@ -21,5 +22,5 @@ public abstract class Condition : MonoBehaviour, ICondition
 
     }
 
-    public abstract bool CanFire();
+    public abstract int CanFire(int fireCount);
 }

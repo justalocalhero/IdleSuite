@@ -1,4 +1,4 @@
 public interface ICondition
 {
-    bool CanFire();
+    int CanFire(int fireCount);
 }

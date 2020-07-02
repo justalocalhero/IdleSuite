@@ -1,8 +1,8 @@
-public delegate void OnTryFire();
+public delegate void OnTryFire(int fireCount);
 
 public interface IConditional
 {
-    bool CanFire { get; set; }
+    int MaxFirable { get; set; }
     event OnTryFire onTryFire;
     
 }

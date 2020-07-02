@@ -1,22 +1,22 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
-public class ResourceCost : MonoBehaviour
+public class ResourceValues : MonoBehaviour
 {
-    private IResourceCost[] resourceCosts;
+    private IResourceValue[] resourceValues;
 
     void Awake()
     {
-        resourceCosts = GetComponentInParent<Building>().GetComponentsInChildren<IResourceCost>();
+        resourceValues = GetComponentsInChildren<IResourceValue>();
     }
     
-    public List<ResourceValue> GetCost()
+    public List<ResourceValue> GetValues()
     {
         List<ResourceValue> consolidatedCosts = new List<ResourceValue>();
 
-        foreach(IResourceCost resourceCost in resourceCosts)
+        foreach(IResourceValue resourceCost in resourceValues)
         {
-            List<ResourceValue> costs = resourceCost.GetCost();
+            List<ResourceValue> costs = resourceCost.GetValue();
 
             foreach(ResourceValue cost in costs)
             {

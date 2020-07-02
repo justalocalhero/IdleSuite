@@ -1,24 +1,26 @@
 ﻿using System.Collections.Generic;
+using UnityEngine;
 
 public class CostCondition : Condition
 {
-    private ResourceCost resouceCost;
+    private CostValues resouceCost;
 
     protected override void OnAwake()
     {
-        resouceCost = GetComponentInParent<Building>().GetComponentInChildren<ResourceCost>();
+        resouceCost = GetComponentInParent<HeirarchyNode>().GetComponentInChildren<CostValues>();
     }
 
-    public override bool CanFire()
+    public override int CanFire(int fireCount)
     {
-        List<ResourceValue> costs = resouceCost.GetCost();
+        List<ResourceValue> costs = resouceCost.GetValues();
 
+        int toReturn = fireCount;
 
         foreach(ResourceValue cost in costs)
         {
-            if(cost.value > cost.resource.Value) return false;
+            toReturn = Mathf.Min(cost.resource.Value / cost.value, toReturn);
         }
 
-        return true;
+        return toReturn;
     }
 }

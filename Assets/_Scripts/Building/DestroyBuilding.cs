@@ -10,11 +10,11 @@ public class DestroyBuilding : MonoBehaviour
         building = GetComponentInParent<Building>();
         firable = GetComponent<IFirable>();
 
-        firable.onFire += Build;
+        firable.onFire += Destroy;
     }
 
-    private void Build()
+    private void Destroy(int destroyCount)
     {
-        building.Count--;
+        building.Count -= destroyCount;
     }
 }

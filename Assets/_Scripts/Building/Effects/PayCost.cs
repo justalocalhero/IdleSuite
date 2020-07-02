@@ -1,17 +1,17 @@
 public class PayCost : Effect
 {
-    private ResourceCost resourceCost;
+    private CostValues resourceCost;
 
     protected override void OnAwake()
     {
-        resourceCost = GetComponentInParent<Building>().GetComponentInChildren<ResourceCost>();
+        resourceCost = GetComponentInParent<HeirarchyNode>().GetComponentInChildren<CostValues>();
     }
     
-    public override void FireEffect()
+    public override void FireEffect(int fireCount)
     {
-        foreach(ResourceValue cost in resourceCost.GetCost())
+        foreach(ResourceValue cost in resourceCost.GetValues())
         {
-            cost.resource.Value -= cost.value;
+            cost.resource.Value -= cost.value * fireCount;
         }
     }
 }

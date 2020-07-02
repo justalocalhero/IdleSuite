@@ -13,3 +13,4 @@ MonoBehaviour:
   m_Name: Wheat
   m_EditorClassIdentifier: 
   initialValue: 0
+  initialMaximum: 5

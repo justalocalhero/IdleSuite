@@ -2,23 +2,24 @@ using UnityEngine;
 
 public class ConditionalFire : MonoBehaviour, IConditional, IFirable
 {
-    public bool CanFire { get; set; }
+    public int MaxFirable { get; set ; }
+
     public event OnTryFire onTryFire;
     public event OnFire onFire;
 
-    public void Fire()
+    public void Fire(int fireCount)
     {
         throw new System.NotImplementedException();
     }
 
-    public void TryFire()
+    public void TryFire(int fireCount)
     {
-        CanFire = true;
+        MaxFirable = fireCount;
 
-        if(onTryFire != null) onTryFire();
+        if(onTryFire != null) onTryFire(fireCount);
 
-        if(!CanFire) return;
+        if(MaxFirable <= 0) return;
 
-        if(onFire != null) onFire();
+        if(onFire != null) onFire(MaxFirable);
     }
 }

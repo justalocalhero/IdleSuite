@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Builder : MonoBehaviour 
+public class Builder : MonoBehaviour
 {
     private Building building;
     private IFirable firable;
@@ -13,8 +13,13 @@ public class Builder : MonoBehaviour
         firable.onFire += Build;
     }
 
-    private void Build()
+    private void Build(int count)
     {
-        building.Count++;
+        building.Count += count;
     }
+}
+
+public abstract class HeirarchyNode : MonoBehaviour
+{
+
 }

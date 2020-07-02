@@ -13,3 +13,4 @@ MonoBehaviour:
   m_Name: Field
   m_EditorClassIdentifier: 
   initialValue: 5
+  initialMaximum: 5

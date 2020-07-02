@@ -2,13 +2,15 @@ using UnityEngine;
 
 public class Timer : MonoBehaviour
 {
-    private IFirable firable;
+    private Building building;
+    private ConditionalFire conditionalFire;
     public float fireTime;
     private float nextFireTime;
 
     private void Start() 
     {
-        firable = GetComponentInParent<IFirable>();
+        building = GetComponentInParent<Building>();
+        conditionalFire = GetComponentInParent<ConditionalFire>();
         nextFireTime = Time.time + fireTime;
     }
 
@@ -17,7 +19,7 @@ public class Timer : MonoBehaviour
         if(Time.time > nextFireTime)
         {
             nextFireTime = Time.time + fireTime;
-            firable.Fire();
+            conditionalFire.TryFire(building.Count);
         }
     }
 }
