@@ -2,12 +2,12 @@ using UnityEngine;
 
 public class Builder : MonoBehaviour
 {
-    private Building building;
+    private BuildingCount building;
     private IFirable firable;
 
     void Start()
     {
-        building = GetComponentInParent<Building>();
+        building = GetComponentInParent<Building>().buildingCount;
         firable = GetComponent<IFirable>();
 
         firable.onFire += Build;
@@ -15,7 +15,7 @@ public class Builder : MonoBehaviour
 
     private void Build(int count)
     {
-        building.Count += count;
+        building.Pending += count;
     }
 }
 

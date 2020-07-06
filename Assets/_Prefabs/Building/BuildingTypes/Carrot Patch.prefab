@@ -35,8 +35,14 @@ PrefabInstance:
     - target: {fileID: 415623953154522439, guid: 31099e8e3ba74e24690fd379dbdba3e7,
         type: 3}
       propertyPath: m_Name
-      value: Carrot Field
+      value: Carrot Patch
       objectReference: {fileID: 0}
+    - target: {fileID: 428438575379697781, guid: 31099e8e3ba74e24690fd379dbdba3e7,
+        type: 3}
+      propertyPath: buildingCount
+      value: 
+      objectReference: {fileID: 11400000, guid: 34aa2e462a6b1be4a84af9cbca592d44,
+        type: 2}
     - target: {fileID: 477262095858537479, guid: 31099e8e3ba74e24690fd379dbdba3e7,
         type: 3}
       propertyPath: m_Name
@@ -714,6 +720,16 @@ PrefabInstance:
     - target: {fileID: 8342673054845628051, guid: 31099e8e3ba74e24690fd379dbdba3e7,
         type: 3}
       propertyPath: m_firstOverflowCharacterIndex
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8457871177571913899, guid: 31099e8e3ba74e24690fd379dbdba3e7,
+        type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8457871177571913899, guid: 31099e8e3ba74e24690fd379dbdba3e7,
+        type: 3}
+      propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8704073596664848151, guid: 31099e8e3ba74e24690fd379dbdba3e7,

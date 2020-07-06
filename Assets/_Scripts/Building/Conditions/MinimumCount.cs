@@ -3,11 +3,11 @@ using UnityEngine;
 public class MinimumCount : Condition
 {
     public int minimumCount;
-    private Building building;
+    private BuildingCount building;
 
     protected override void OnAwake()
     {
-        building = GetComponentInParent<Building>();
+        building = GetComponentInParent<Building>().buildingCount;
     }
 
     public override int CanFire(int fireCount)

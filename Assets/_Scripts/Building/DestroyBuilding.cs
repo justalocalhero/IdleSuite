@@ -2,12 +2,12 @@ using UnityEngine;
 
 public class DestroyBuilding : MonoBehaviour
 {
-    private Building building;
+    private BuildingCount building;
     private IFirable firable;
 
     void Start()
     {
-        building = GetComponentInParent<Building>();
+        building = GetComponentInParent<Building>().buildingCount;
         firable = GetComponent<IFirable>();
 
         firable.onFire += Destroy;
@@ -15,6 +15,6 @@ public class DestroyBuilding : MonoBehaviour
 
     private void Destroy(int destroyCount)
     {
-        building.Count -= destroyCount;
+        building.Pending -= destroyCount;
     }
 }

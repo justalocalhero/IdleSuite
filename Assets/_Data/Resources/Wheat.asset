@@ -14,3 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   initialValue: 0
   initialMaximum: 5
+  metaResources:
+  - metaResource: {fileID: 11400000, guid: 93fa009a78bc8e24686737b3f8182ae9, type: 2}
+    value: 1

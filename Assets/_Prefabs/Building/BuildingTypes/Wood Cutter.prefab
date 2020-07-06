@@ -37,6 +37,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Wood Cutter
       objectReference: {fileID: 0}
+    - target: {fileID: 428438575379697781, guid: 31099e8e3ba74e24690fd379dbdba3e7,
+        type: 3}
+      propertyPath: buildingCount
+      value: 
+      objectReference: {fileID: 11400000, guid: a22686eedc34db44fa6d6e4e0f819210,
+        type: 2}
     - target: {fileID: 485781388017937568, guid: 31099e8e3ba74e24690fd379dbdba3e7,
         type: 3}
       propertyPath: values.Array.size
@@ -736,6 +742,16 @@ PrefabInstance:
     - target: {fileID: 8342673054845628051, guid: 31099e8e3ba74e24690fd379dbdba3e7,
         type: 3}
       propertyPath: m_firstOverflowCharacterIndex
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8457871177571913899, guid: 31099e8e3ba74e24690fd379dbdba3e7,
+        type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8457871177571913899, guid: 31099e8e3ba74e24690fd379dbdba3e7,
+        type: 3}
+      propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8704073596664848151, guid: 31099e8e3ba74e24690fd379dbdba3e7,

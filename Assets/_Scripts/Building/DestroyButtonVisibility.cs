@@ -1,12 +1,12 @@
-using UnityEngine;
+﻿using UnityEngine;
 
-public class DestroyButton : MonoBehaviour
+public class DestroyButtonVisibility : MonoBehaviour
 {
-    private Building building;
+    private BuildingCount building;
 
     private void Start() 
     {
-        building = GetComponentInParent<Building>();
+        building = GetComponentInParent<Building>().buildingCount;
         building.onCountChanged += (int change) => UpdateVisibility();
         UpdateVisibility();
     }

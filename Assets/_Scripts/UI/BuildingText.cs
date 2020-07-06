@@ -3,22 +3,25 @@ using TMPro;
 
 public class BuildingText : MonoBehaviour
 {
-    private Building building;
+    private BuildingCount building;
     public TextMeshProUGUI nameText;
     public TextMeshProUGUI valueText;
 
     private void Start() 
     {
-        building = GetComponentInParent<Building>();
+        building = GetComponentInParent<Building>().buildingCount;
 
-        building.onCountChanged += (int count) => UpdateText();
+        building.onChanged += UpdateText;
 
         UpdateText();        
     }
 
     private void UpdateText()
     {
-        nameText.SetText(building.name);
-        valueText.SetText(building.Count.ToString());
+        string nameString = building.name;
+        string valueString = building.Count.ToString();
+
+        nameText.SetText(nameString);
+        valueText.SetText(valueString);
     }
 }

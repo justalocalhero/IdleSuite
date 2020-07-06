@@ -3,12 +3,12 @@ using UnityEngine;
 
 public class Refund : MonoBehaviour
 {
-    private Building building;
+    private BuildingCount building;
     public List<ResourceValue> refundValues;
 
     void Start()
     {
-        building = GetComponentInParent<Building>();
+        building = GetComponentInParent<Building>().buildingCount;
         building.onCountChanged += Fire;
     }
     

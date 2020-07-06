@@ -2,14 +2,14 @@ using UnityEngine;
 
 public class Timer : MonoBehaviour
 {
-    private Building building;
+    private BuildingCount building;
     private ConditionalFire conditionalFire;
     public float fireTime;
     private float nextFireTime;
 
     private void Start() 
     {
-        building = GetComponentInParent<Building>();
+        building = GetComponentInParent<Building>().buildingCount;
         conditionalFire = GetComponentInParent<ConditionalFire>();
         nextFireTime = Time.time + fireTime;
     }

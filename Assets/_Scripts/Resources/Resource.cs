@@ -26,8 +26,6 @@ public class Resource : ScriptableObject
     public delegate void OnChanged();
     public OnChanged onChanged;
 
-
-
     [SerializeField] private int initialValue;
     private int _value;
     public int lifeTimeValue {get; private set;}
@@ -69,7 +67,6 @@ public class Resource : ScriptableObject
 
         }
     }
-
     
     public int Free { get { return Value - Reserved; } }
     public int Space { get { return Maximum - Value; } }
@@ -95,6 +92,9 @@ public class Resource : ScriptableObject
 
         }
     }
+    
+    [Space(20)]
+    public MetaResourceValue[] metaResources;
 
     public void ResetResource()
     {
@@ -103,13 +103,17 @@ public class Resource : ScriptableObject
         _reserved = 0;
         _maximum = initialMaximum;
         Value = initialValue;
+
+        foreach(MetaResourceValue metaResource in metaResources)
+        {
+            metaResource.metaResource.AddResource(this, metaResource.value, true);
+        }
     }
 
     public void Refund(int toRefund)
     {
         _value += toRefund;
         if(onValueSet != null) onValueSet(_value);
-
     }    
 }
 
@@ -119,4 +123,3 @@ public struct ResourceValue
     public Resource resource;
     public int value;
 }
-
