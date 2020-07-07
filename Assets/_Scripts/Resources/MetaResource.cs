@@ -25,6 +25,47 @@ public class MetaResource : ScriptableObject
 
     public List<MetaResourceData> resources = new List<MetaResourceData>();
 
+    public int Consume
+    {
+        set
+        {
+            int remaining = value;
+
+            for(int i = 0; i < resources.Count; i++)
+            {
+                if(remaining <= 0) return;
+
+                MetaResourceData data = resources[i];
+                
+                if(!data.consume) continue;
+
+                int count = remaining / data.value;
+
+                if(count <= 0) continue;
+
+                count = Mathf.Clamp(count, 0, data.resource.Value);
+                data.resource.Value -= count;
+                remaining -= (count * data.value);
+                resources[i] = data;
+            }
+
+            for(int i = 0; i < resources.Count; i++)
+            {
+                if(remaining <= 0) return;       
+
+                MetaResourceData data = resources[i];
+
+                if(!data.consume) continue;
+                if(data.resource.Value <= 0) continue;
+
+                data.resource.Value--;
+                remaining -= (data.value * data.resource.Value);
+
+                resources[i] = data;
+            }            
+        }
+    }
+
     public int Value 
     {
         get

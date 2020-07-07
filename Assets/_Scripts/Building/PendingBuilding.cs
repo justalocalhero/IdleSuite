@@ -3,41 +3,38 @@ using UnityEngine;
 public class PendingBuilding : MonoBehaviour
 {
     public BuildingCount buildingCount { get; private set; }
-    private WorkerManager workerManager;
-    private float nextFireTime;
-    private const float fireTime = 1f;
+    public WorkerCount builders;
+    private float remaining;
+    public float fireTime;
+
     public float Progress 
     {
         get 
         { 
-            if(nextFireTime == float.MaxValue) return 0;
-            return 1 - (nextFireTime - Time.time) / fireTime;
+            return 1 - Mathf.Clamp(remaining, 0, fireTime) / fireTime;
         }
     }
 
     private void Awake() 
     {
         buildingCount = GetComponentInParent<Building>().buildingCount;
-        buildingCount.onPendingSet += UpdateNextFireTime;
-        nextFireTime = float.MaxValue;
     }
 
     private void Start() 
     {
-        UpdateNextFireTime(buildingCount.Pending);
-    }
-
-    public void UpdateNextFireTime(int pending)
-    {
-        if(pending == 0) nextFireTime = float.MaxValue;
-        else if(nextFireTime == float.MaxValue) nextFireTime = Time.time + fireTime;
+        remaining = fireTime;
     }
 
     public void Update()
     {
-        if(Time.time > nextFireTime)
+        if(remaining > 0)
         {
-            nextFireTime = Time.time + 1f;
+            if(buildingCount.Pending != 0) remaining -= (builders.Count * Time.deltaTime);
+        }        
+        else
+        {
+            remaining = fireTime;
+
             if(buildingCount.Pending > 0)
             {
                 buildingCount.Pending--;
