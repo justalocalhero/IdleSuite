@@ -31,7 +31,9 @@ public class MetaResourceText : MonoBehaviour
             string del = "\n   ";
             nameString += del + data.resource.name;
             valueString += del + data.resource.Free + " / " + data.resource.Maximum;
-        }        
+        }
+
+        valueString += "\n";
 
         nameText.SetText(nameString);
         valueText.SetText(valueString);        

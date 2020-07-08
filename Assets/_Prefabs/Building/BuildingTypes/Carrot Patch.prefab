@@ -74,6 +74,11 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 925710107620385210, guid: 31099e8e3ba74e24690fd379dbdba3e7,
+        type: 3}
+      propertyPath: m_textInfo.lineCount
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 1035298496883618621, guid: 31099e8e3ba74e24690fd379dbdba3e7,
         type: 3}
       propertyPath: m_AnchorMin.y
@@ -160,6 +165,11 @@ PrefabInstance:
       propertyPath: m_SizeDelta.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3092115233934894652, guid: 31099e8e3ba74e24690fd379dbdba3e7,
+        type: 3}
+      propertyPath: m_textInfo.lineCount
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 3483052120305089921, guid: 31099e8e3ba74e24690fd379dbdba3e7,
         type: 3}
       propertyPath: m_textInfo.characterCount
@@ -188,7 +198,7 @@ PrefabInstance:
     - target: {fileID: 3629854104116929612, guid: 31099e8e3ba74e24690fd379dbdba3e7,
         type: 3}
       propertyPath: fireTime
-      value: 1
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 3690985105079907692, guid: 31099e8e3ba74e24690fd379dbdba3e7,
         type: 3}

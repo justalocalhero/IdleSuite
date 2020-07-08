@@ -4,8 +4,9 @@ using UnityEngine;
 public class WorkerManager : MonoBehaviour
 {
     public Transform container;
-    public WorkerText prefab;
-    public WorkerCount total;
+    public WorkerText workerPrefab;
+    public ResourceText reosurcePrefab;
+    public Resource total;
     public WorkerCount forager;
     public WorkerCount builder;
     public MetaResource food;
@@ -18,29 +19,35 @@ public class WorkerManager : MonoBehaviour
 
     void Start()
     {
-        BuildWorkerText(total);
-        BuildWorkerText(forager);
-        BuildWorkerText(builder);
-        total.Count = 1;
+        total.ResetResource();
+        BuildText(total);
+        BuildText(forager);
+        BuildText(builder);
     }
 
-    private void BuildWorkerText(WorkerCount workerCount)
+    private void BuildText(WorkerCount workerCount)
     {
-        WorkerText workerText = Instantiate(prefab, container.transform.position, Quaternion.identity, container);
+        WorkerText workerText = Instantiate(workerPrefab, container.transform.position, Quaternion.identity, container);
         workerText.workerCount = workerCount;
+    }
+
+    private void BuildText(Resource resource)
+    {
+        ResourceText resourceText = Instantiate(reosurcePrefab, container.transform.position, Quaternion.identity, container);
+        resourceText.resource = resource;
     }
 
     private void Calculate()
     {
-        if(food.Value >= total.Count)
+        if(food.Value >= total.Free)
         {
-            builder.Count = total.Count;
+            builder.Count = total.Free;
             forager.Count = 0;
         }
         else
         {
             builder.Count = 0;
-            forager.Count = total.Count;
+            forager.Count = total.Free;
         }
     }
 }

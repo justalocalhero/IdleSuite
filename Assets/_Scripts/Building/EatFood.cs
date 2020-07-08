@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class EatFood : MonoBehaviour
 {
-    public WorkerCount workers;
+    public Resource workers;
     public MetaResource food;
     public float fireTime;
     private float nextFireTime = float.MaxValue;
@@ -23,17 +23,18 @@ public class EatFood : MonoBehaviour
         if(Time.time > nextFireTime)
         {
             UpdateFireTime();
-            food.Consume = workers.Count;
+            food.Consume = workers.Value;
+
+            if(workers.Space <= 0) return;
+
             if(food.Value > 0) successes++;
             else successes -= 10;
-            if(successes > workers.Count * 10) 
+            if(successes > workers.Value * 10) 
             {
-                workers.Count++;
+                workers.Value++;
                 successes = 0;
             }
             successes = Mathf.Clamp(successes, 0, successes);
         }
-
     }
-
 }
