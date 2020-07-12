@@ -29,7 +29,6 @@ public class PendingCount : ScriptableObject
     public delegate void OnChanged();
     public OnChanged onChanged;
 
-
     private int _count;
     public int Count 
     {

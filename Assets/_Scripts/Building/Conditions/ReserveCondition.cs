@@ -15,7 +15,7 @@ public class ReserveCondition : Condition
 
         foreach(ResourceValue reserve in reserveCost.GetValues())
         {
-            toReturn = Mathf.Min(toReturn, reserve.resource.Free);
+            toReturn = Mathf.Min(toReturn, reserve.resource.Free / reserve.value);
         }
 
         return toReturn;

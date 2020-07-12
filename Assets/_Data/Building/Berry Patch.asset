@@ -9,11 +9,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c67f311febd0ec64f82658683bc04912, type: 3}
-  m_Name: Berry
+  m_Script: {fileID: 11500000, guid: 7536daa3175632146a7067d4d3ddea05, type: 3}
+  m_Name: Berry Patch
   m_EditorClassIdentifier: 
-  initialValue: 0
-  initialMaximum: 25
-  metaResources:
-  - metaResource: {fileID: 11400000, guid: 93fa009a78bc8e24686737b3f8182ae9, type: 2}
-    value: 1

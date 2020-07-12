@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class WorkerManager : MonoBehaviour
 {
+    private List<Workers> workers = new List<Workers>();
     public Transform container;
     public WorkerText workerPrefab;
     public ResourceText reosurcePrefab;
@@ -10,11 +11,17 @@ public class WorkerManager : MonoBehaviour
     public WorkerCount forager;
     public WorkerCount builder;
     public MetaResource food;
+    public int reserveBuilder;
+
+    public static WorkerManager instance;
 
     void Awake()
     {
+        if(instance != null) Destroy(this);
+        else instance = this;
+
         total.onChanged += Calculate;
-        food.onChanged += Calculate;        
+        food.onChanged += Calculate;
     }
 
     void Start()
@@ -39,15 +46,39 @@ public class WorkerManager : MonoBehaviour
 
     private void Calculate()
     {
-        if(food.Value >= total.Free)
+        int remaining = total.Free;
+
+        if(food.Value < remaining)
         {
-            builder.Count = total.Free;
-            forager.Count = 0;
+            forager.Count = remaining;
+            remaining = 0;
         }
         else
         {
-            builder.Count = 0;
-            forager.Count = total.Free;
+            forager.Count = 0;
         }
+
+        int builders = Mathf.Min(reserveBuilder, remaining);
+        remaining -= builders;        
+
+        foreach(Workers worker in workers)
+        {
+            int workerCount = Mathf.Min(worker.Prefer, remaining);
+            remaining -= workerCount;
+            worker.Value = workerCount;
+
+            Debug.Log(workerCount + " : " + remaining);
+        }
+
+        builders += remaining;
+
+        builder.Count = builders;
+    }
+
+    public void Register(Workers worker)
+    {
+        worker.onChanged += Calculate;
+        workers.Add(worker);
+
     }
 }

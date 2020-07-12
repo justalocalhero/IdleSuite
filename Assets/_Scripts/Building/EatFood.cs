@@ -29,7 +29,8 @@ public class EatFood : MonoBehaviour
 
             if(food.Value > 0) successes++;
             else successes -= 10;
-            if(successes > workers.Value * 10) 
+            if(food.Value > workers.Value) successes += (food.Value / workers.Value);
+            if(successes > workers.Value * 10 / fireTime) 
             {
                 workers.Value++;
                 successes = 0;

@@ -27,9 +27,13 @@ public class PendingBuilding : MonoBehaviour
 
     public void Update()
     {
+        if(buildingCount.Pending == 0) return;
+
+        float progress = Mathf.Max(1, builders.Count) * Time.deltaTime;
+
         if(remaining > 0)
         {
-            if(buildingCount.Pending != 0) remaining -= (builders.Count * Time.deltaTime);
+            if(buildingCount.Pending != 0) remaining -= progress;
         }        
         else
         {

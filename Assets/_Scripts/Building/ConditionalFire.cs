@@ -9,17 +9,25 @@ public class ConditionalFire : MonoBehaviour, IConditional, IFirable
 
     public void Fire(int fireCount)
     {
-        throw new System.NotImplementedException();
+        if(onFire != null) onFire(MaxFirable);
+
     }
 
     public void TryFire(int fireCount)
     {
-        MaxFirable = fireCount;
-
-        if(onTryFire != null) onTryFire(fireCount);
-
+        CanFire(fireCount);
+        
         if(MaxFirable <= 0) return;
 
         if(onFire != null) onFire(MaxFirable);
+    }
+
+    public int CanFire(int fireCount)
+    {
+        MaxFirable = fireCount;
+
+        if(onTryFire != null) onTryFire(fireCount);
+        
+        return MaxFirable;
     }
 }

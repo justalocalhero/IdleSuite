@@ -9,6 +9,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7536daa3175632146a7067d4d3ddea05, type: 3}
-  m_Name: WoodBox
+  m_Script: {fileID: 11500000, guid: 1b18a24eb4fde284fa0e9cf61439d079, type: 3}
+  m_Name: Fuel
   m_EditorClassIdentifier: 
